@@ -1,0 +1,12 @@
+.side-bar{
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  border-right: 4px solid #000;
+}
+
+.header-bar{
+  padding: 20px;
+  border-bottom: 4px solid #000; 
+  width: 100%;
+}
