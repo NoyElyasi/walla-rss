@@ -1,0 +1,23 @@
+.side-bar{
+  width: 20%;
+  // padding: 10px;
+  border-right: 4px solid #000;
+}
+
+.header-bar{
+  padding-bottom: 20px;
+  border-bottom: 4px solid #000; 
+  width: 100%;
+}
+
+.body-bar{
+  // height: 100%;
+}
+
+input{
+  text-align: center;
+}
+
+.search-button{
+  // margin-left: 10px;
+}
