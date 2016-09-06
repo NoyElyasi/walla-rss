@@ -2,9 +2,11 @@
 
 const gulp    = require('gulp'),
       gutil    = require('gulp-util'),
-      uglify  = require('gulp-uglify'),
+      uglifyjs  = require('gulp-uglify'),
+      uglifycss  = require('gulp-clean-css'),
     concat  = require('gulp-concat'),
     webserver= require('gulp-webserver');
+     watch = require('gulp-watch');
 
 
 
@@ -13,25 +15,26 @@ gulp.task('webserver', function(){
        livereload: true,
        directorylistning: true,
        open:true
-   }));   
+   }));
+   // .pipe(reload({stream: true}));   
 });
-
-//gulp.task('default', function(){
-//    gulp.run('webserver'); 
-//});
 
 
 gulp.task('style', function () {
-    gulp.src('main/app/screens/*.css')
-        .pipe(uglify())
-        .pipe(concat('main/style/all.css'))
-        .pipe(gulp.dest('main/style'));
+    gulp.src('main/app/**/*.css')
+        .pipe(uglifycss())
+        .pipe(concat('all.css'))
+        .pipe(gulp.dest('./main/style'));
+        // .pipe(reload({stream: true}));
+});
+
+gulp.task('watch', function(){
+    gulp.watch('main/**/*.css', ['style']);
 });
 
 gulp.task('default', function(){
-    gulp.run('style', 'webserver'); 
+    gulp.run('style', 'webserver', 'watch'); 
 });
-
 
 
 //gulp.task('build', ['webserver', 'style'], () => {

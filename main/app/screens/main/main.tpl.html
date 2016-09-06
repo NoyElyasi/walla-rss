@@ -1,12 +1,17 @@
-<header></header>
-<content></content>
-
-<aside class="side-bar">
-    <div class="header-bar row">
-     <sidebar-header></sidebar-header> 
-    </div>
-    
-    <div class="body-bar row">
-      
-    </div>
-</aside>
+<div class="row font">
+	<div class="col-md-8 col-md-offset-4">
+		<header class="header-content">{{header}}</header>
+		<content class="content" ng-repeat="item in feed">
+			<item-directive></item-directive>
+		</content>
+	</div>
+	<aside class="col-md-4 side-bar">
+	    <div class="header-bar row">
+	     <sidebar-header></sidebar-header> 
+	    </div>
+	    
+	    <div class="list-btn" ng-repeat="url in urlArray">
+	      <url-button-list></url-button-list>
+	    </div>
+	</aside>
+</div>
