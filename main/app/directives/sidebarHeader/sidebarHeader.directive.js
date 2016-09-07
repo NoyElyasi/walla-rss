@@ -34,32 +34,38 @@
 
             //adding the buttons.
             scope.addUrlButton = function(){
-                var a = [];
+                var tempArray = [];
+                //if the urlArray is not null.
                 if(JSON.parse(localStorage.getItem('urlArray')) != null)
                 {
-                    a = JSON.parse(localStorage.getItem('urlArray'));
+                    tempArray = JSON.parse(localStorage.getItem('urlArray'));
                 }
-                a.unshift([scope.url, scope.jsonFile]);
-                localStorage.setItem('urlArray', JSON.stringify(a));
+                //add the new url+json to the beginning of the temoArray.
+                tempArray.unshift([scope.url, scope.jsonFile]);
+                localStorage.setItem('urlArray', JSON.stringify(tempArray));
                 scope.urlArray= JSON.parse(localStorage["urlArray"]);
             }
 
             //deleting the buttons.
             scope.deleteUrlButton = function(deleUrl){
-                var a = [];
+                var tempArray = [];
+                //if the urlArray is not null.
                 if(JSON.parse(localStorage.getItem('urlArray')) != null)
                 {
-                    a = JSON.parse(localStorage.getItem('urlArray'));
+                    tempArray = JSON.parse(localStorage.getItem('urlArray'));
                 }
-                for(array in a){
+                //loop that runs over the array.
+                for(array in tempArray){
                     var idx=-1;
-                    if(a[array][0] == deleUrl[0]){
+                    //checks the index of the pressed button.
+                    if(tempArray[array][0] == deleUrl[0]){
                         idx = array;
                         break;
                     }
                 }
-                if (idx != -1) a.splice(idx, 1);
-                localStorage.setItem('urlArray', JSON.stringify(a));
+                //if the idx is valid delete the pressed button.
+                if (idx != -1) tempArray.splice(idx, 1);
+                localStorage.setItem('urlArray', JSON.stringify(tempArray));
                 scope.urlArray= JSON.parse(localStorage["urlArray"]);
             }
 

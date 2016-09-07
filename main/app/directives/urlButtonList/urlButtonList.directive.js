@@ -1,4 +1,3 @@
-
 (function () {
     angular.module("directives").directive("urlButtonList", sidebarHeader);
     sidebarHeader.$inject = [];

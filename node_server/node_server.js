@@ -10,13 +10,13 @@ app.get('/getXML/', function (req, res) {
 	  uri: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&q=' + [req.query.url],
 	  method: "GET"
 	}, function(error, response, body) {
-		if (!error && response.statusCode == 200) {
-			console.log("good");
-			res.json(body); // Show the HTML for the Google homepage.
+		//Parse body into json object
+		var bodyJSON = JSON.parse(body);
+		if (!error && bodyJSON.responseStatus == 200) {
+			res.json(JSON.stringify(bodyJSON));
 		}else{
 			console.log("error");
-			response.status(500);
-			response.render('error', {error:err});
+			res.status(500);
 		}
 	});
 });

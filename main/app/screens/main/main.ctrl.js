@@ -8,13 +8,13 @@
        $scope.header;
        var urlArray = [];
 
-       //if the urlArray isnt exist yet in the localStorage.
+      //if the urlArray isnt exist yet in the localStorage.
       if (!localStorage.urlArray) {
        localStorage["urlArray"] = JSON.stringify(urlArray);
       }
 
      	$scope.urlArray= JSON.parse(localStorage["urlArray"]);
-     	// localStorage.clear();
+      //if the user refresh the page, the content of the page will be initialized.
       if($scope.urlArray.length>0){
         $scope.jsonFile=JSON.parse($scope.urlArray[0][1]);
         $scope.feed=$scope.jsonFile.responseData.feed.entries;
